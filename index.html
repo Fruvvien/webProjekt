@@ -31,10 +31,15 @@
       <div class="container" >
         <form id="formUser" class="d-none" method="post">
             <div class="form-group">
-                <label for="username" >Felhasználó</label>
-                <input type="text" id="username" class="form-control">
+                <label for="firstName" >Vezetéknév</label>
+                <input type="text" id="firstName" class="form-control">
  
             </div>
+            <div class="form-group">
+              <label for="lastName" >Keresztnév</label>
+              <input type="text" id="lastName" class="form-control">
+
+          </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" class="form-control">
@@ -60,10 +65,14 @@
           <div class="modal-content">
             <div class="modal-body ">
               <form id="updateForm" name="updateForm">
-                    <div class="form-group">
-                      <label for= "inputUserName" >Név</label>
-                      <input id="inputUserName" name="inputUserName" class="form-control">
+                  <div class="form-group">
+                      <label for= "inputFirstName" >Vezetéknév</label>
+                      <input id="inputFirstName" name="inputFirstName" class="form-control">
                   </div>
+                  <div class="form-group">
+                    <label for= "inputLastName" >Keresztnév</label>
+                    <input id="inputLastName" name="inputLastName" class="form-control">
+                </div>
                   <div class="fomr-group">
                       <label for= "inputUserEmail" >Email</label>
                       <input  id="inputUserEmail"  name="inputUserEmail" class="form-control">

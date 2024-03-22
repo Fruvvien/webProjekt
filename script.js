@@ -1,8 +1,9 @@
-const url = "https://retoolapi.dev/bwS4f0/data";
+const url = "https://retoolapi.dev/SjuGhh/data";
  
 document.addEventListener("DOMContentLoaded", () =>{
     
-    const userName = document.getElementById("username");
+    const firstName = document.getElementById("firstName");
+    const lastName = document.getElementById("lastName");
     const email = document.getElementById("email");
     
     const linkAddUser = document.getElementById("addPage");
@@ -23,7 +24,8 @@ document.addEventListener("DOMContentLoaded", () =>{
         event.preventDefault();
     
         allData = {
-            username: userName.value,
+            firstName: firstName.value,
+            lastName: lastName.value,
             email: email.value,
             
     
@@ -37,13 +39,13 @@ document.addEventListener("DOMContentLoaded", () =>{
 
     async function createNewUser(allData){
 
-        if(allData.username != "" || allData.email != "" ){
+        if(allData.firstName != ""  && allData.lastName != "" && allData.email ||allData.firstName != "" && allData.email != "" &&  allData.lastName != "" || allData.lastName != "" && allData.email != ""  && allData.firstName != "" ){
             await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({Name: allData.username, Email: allData.email})
+                body: JSON.stringify({FirstName: allData.firstName,LastName: allData.lastName, Email: allData.email})
             })
             readUsers();
             window.location.reload();
@@ -82,7 +84,8 @@ document.addEventListener("DOMContentLoaded", () =>{
             `
             <div class="card  shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
                 <div class="card-body ">
-                    <h5 class="card-title">${value.Name}</h5>
+                    <h5 class="card-title">${value.FirstName}</h5>
+                    <h5 class="card-title">${value.LastName}</h5>
                     <p class="card-text">${value.Email}</p>
                     <p class="card-text">${value.id}</p>
                     <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#updateList" onclick="giveIdToUpdateButton(${value.id})">Módosít</button>
@@ -110,7 +113,8 @@ document.addEventListener("DOMContentLoaded", () =>{
     
 
     async function updateButton(id){
-        const updateUserName = document.getElementById("inputUserName");
+        const updateFirstName = document.getElementById("inputFirstName");
+        const updateLastName = document.getElementById("inputLastName");
         const updateUserEmail = document.getElementById("inputUserEmail");
             
         await fetch(url + "/" + id, {
@@ -118,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () =>{
             headers: {
                 'Content-type': 'application/json',
             },
-            body: JSON.stringify({Name : updateUserName.value , Email: updateUserEmail.value}),
+            body: JSON.stringify({FirstName : updateFirstName.value ,LastName:updateLastName.value,  Email: updateUserEmail.value}),
         }).then((response) => response.json())
         window.location.reload();
            
